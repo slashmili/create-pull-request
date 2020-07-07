@@ -62,6 +62,7 @@ async function run() {
       milestone: core.getInput("milestone"),
       project: core.getInput("project"),
       projectColumn: core.getInput("project-column"),
+      workingBase: core.getInput("working-base"),
       draft: core.getInput("draft"),
       branch: core.getInput("branch"),
       requestToParent: core.getInput("request-to-parent"),
@@ -85,6 +86,7 @@ async function run() {
     if (inputs.milestone) process.env.CPR_MILESTONE = inputs.milestone;
     if (inputs.project) process.env.CPR_PROJECT_NAME = inputs.project;
     if (inputs.projectColumn) process.env.CPR_PROJECT_COLUMN_NAME = inputs.projectColumn;
+    if (inputs.workingBase) process.env.CPR_WORKING_BASE = inputs.workingBase;
     if (inputs.draft) process.env.CPR_DRAFT = inputs.draft;
     if (inputs.branch) process.env.CPR_BRANCH = inputs.branch;
     if (inputs.requestToParent) process.env.CPR_REQUEST_TO_PARENT = inputs.requestToParent;

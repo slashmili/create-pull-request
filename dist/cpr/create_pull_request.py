@@ -111,6 +111,7 @@ commit_message = os.getenv("CPR_COMMIT_MESSAGE", DEFAULT_COMMIT_MESSAGE)
 committer = os.environ.get("CPR_COMMITTER")
 author = os.environ.get("CPR_AUTHOR")
 base = os.environ.get("CPR_BASE")
+working_base = os.environ.get("CPR_WORKING_BASE")
 
 # Set the repo path
 repo = Repo(path)
@@ -139,7 +140,7 @@ if protocol == "HTTPS":
 # - HEAD is a merge commit (pull_request events)
 # - HEAD is a tag
 try:
-    working_base = repo.git.symbolic_ref("HEAD", "--short")
+    working_base = working_base or repo.git.symbolic_ref("HEAD", "--short")
 except GitCommandError as e:
     print(f"::debug::{e.stderr}")
     print(

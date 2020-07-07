@@ -51,7 +51,7 @@ def create_or_update_branch(repo, repo_url, commit_message, base, branch):
     diff = False
 
     # Get the working base. This may or may not be the actual base.
-    working_base = repo.git.symbolic_ref("HEAD", "--short")
+    working_base =  os.environ.get("CPR_WORKING_BASE") or repo.git.symbolic_ref("HEAD", "--short")
     # If the base is not specified it is assumed to be the working base
     if base is None:
         base = working_base
